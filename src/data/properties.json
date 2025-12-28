@@ -1,0 +1,121 @@
+{
+	"properties": [
+        {
+            "id":"prop1",
+			"type":"House",
+            "bedrooms":3,
+			"price":750000,
+			"tenure":"Freehold",
+			"description":"Attractive three bedroom semi-detached family home situated within 0.5 miles of Petts Wood station with fast trains to London and within easy walking distance of local shops, schools, bus routes and National Trust woodland. The property comprises; two receptions, fitted 18'9 x 10'1 kitchen/breakfast room and conservatory. The property also benefits from having a utility room and cloakroom. To the first floor there are three bedrooms and a family bathroom with separate WC. Additional features include double glazing, gas central heating and a well presented interior...",
+			"location":"Petts Wood Road, Petts Wood, Orpington BR5",
+			"picture":"images/prop1pic1small.jpg",
+			"url":"properties/prop1.html",
+            "added": {
+                "month":"October",
+                "day":12,
+                "year":2022
+            }
+        },
+		{
+            "id":"prop2",
+			"type":"Flat",
+            "bedrooms":2,
+			"price":399995,
+			"tenure":"Freehold",
+			"description":"Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
+			"location":"Crofton Road Orpington BR6",
+			"picture":"images/prop2pic1small.jpg",
+			"url":"properties/prop2.html",
+            "added": {
+                "month":"September",
+                "day":14,
+                "year":2022
+            }
+        },
+        {
+            "id": "prop3",
+            "type": "House",
+            "bedrooms": 5,
+            "price": 1450000,
+            "tenure": "Freehold",
+            "description": "An exceptional five bedroom detached family residence offering versatile and spacious accommodation across three floors. This impressive property has been extended and refurbished to an exacting standard by the current owners. <br>Ground floor features include a magnificent entrance hall, guest cloakroom, three reception rooms, and a stunning open-plan kitchen/family room with bi-fold doors opening onto a landscaped garden with patio area. The first floor comprises a master bedroom suite with dressing area and en-suite, three further double bedrooms, and a luxurious family bathroom. The second floor offers a fifth bedroom/studio. <br>Outside, the property boasts a double garage, driveway parking for multiple vehicles, and beautifully maintained gardens. Located in a prestigious residential area with excellent schools nearby.",
+            "location": "Widmore Road, Bromley BR1",
+            "picture": "images/prop3pic1small.jpg",
+            "url": "properties/prop3.html",
+            "added": {
+                "month": "September",
+                "day": 22,
+                "year": 2024
+             }  
+        },
+        {
+                
+            "id": "prop4",
+            "type": "Flat",
+            "bedrooms": 1,
+            "price": 295000,
+            "tenure": "Leasehold",
+            "description": "A modern one bedroom apartment located on the third floor of a popular residential development with lift access. This well-maintained property is perfect for professionals or first-time buyers seeking a stylish, low-maintenance home. <br>The accommodation includes a spacious open-plan kitchen/living room with modern fitted units and integrated appliances, a comfortable double bedroom with fitted wardrobes, and a contemporary bathroom suite. The property benefits from electric heating, double glazing, and a private balcony with pleasant views. <br>Situated within easy reach of Petts Wood station, local shops, schools and bus routes. The development also offers secure entry system and communal gardens. Chain free sale.",
+            "location": "Queensway, West Wickham BR4",
+            "picture": "images/prop4pic1small.jpg",
+            "url": "properties/prop4.html",
+            "added": {
+                "month": "May",
+                "day": 12,
+                "year": 2024
+            }  
+        },
+        {
+            "id": "prop5",
+            "type": "House",
+            "bedrooms": 4,
+            "price": 875000,
+            "tenure": "Freehold",
+            "description": "Superbly presented four bedroom detached house situated in a quiet cul-de-sac location within a highly desirable residential area. This well-maintained family home offers flexible accommodation ideal for modern family living. <br>The property features a welcoming entrance hall, guest cloakroom, spacious living room with French doors to the garden, separate dining room, and a contemporary kitchen/breakfast room fitted with a range of wall and base units. The first floor provides four good-sized bedrooms, master with en-suite shower room, and a refitted family bathroom. <br>Externally there is a block-paved driveway providing parking for several vehicles, an integral garage, and an attractive rear garden mainly laid to lawn with patio area. The property is well-positioned for local schools, shops and transport links.",
+            "location": "Woodland Avenue, Beckenham BR3",
+            "picture": "images/prop5pic1small.jpg",
+            "url": "properties/prop5.html",
+            "added": {
+                "month": "January",
+                "day": 30,
+                "year": 2023
+            } 
+        },
+        {
+            "id": "prop6",
+            "type": "House",
+            "bedrooms": 2,
+            "price": 485000,
+            "tenure": "Freehold",
+            "description": "A charming two bedroom detached house occupying a generous corner plot in a peaceful residential setting. <br>The well-maintained accommodation comprises an entrance porch, hallway with storage, spacious living room with patio doors overlooking the rear garden, modern fitted kitchen/breakfast room, two double bedrooms, and a contemporary bathroom suite. <br>Outside, the property features a block-paved driveway with parking for two cars, an attached single garage, and beautifully landscaped front and rear gardens with established borders, lawn areas, and garden shed.",
+            "location": "Burlington Road, New Malden KT3",
+            "picture": "images/prop6pic1small.jpg",
+            "url": "properties/prop6.html",
+            "added": {
+                "month": "July",
+                "day": 5,
+                "year": 2025
+
+            }
+        },
+        {
+            "id": "prop7",
+            "type": "Flat",
+            "bedrooms": 3,
+            "price": 595000,
+            "tenure": "Leasehold",
+            "description": "An impressive three bedroom duplex apartment arranged over two floors in a modern purpose-built development. This spacious property combines contemporary design with practical family living and boasts excellent natural light throughout. <br>The ground floor comprises a welcoming entrance hall, guest cloakroom, and a superb open-plan kitchen/living/dining room with sleek fitted units, integrated appliances, and large windows providing garden views. Upstairs, there are three well-proportioned bedrooms, master with en-suite shower room, and a stylish family bathroom with white suite. <br>Additional features include underfloor heating, quality wood flooring, fitted wardrobes, private balcony, allocated parking space, and communal landscaped gardens. The development is conveniently located for shops, schools, and transport links including nearby train services to central London.",
+            "location": "Hayes Lane, Bromley BR2",
+            "picture": "images/prop7pic1small.jpg",
+            "url": "properties/prop7.html",
+            "added": {
+                "month": "March",
+                "day": 18,
+                "year": 2024
+            }  
+        }
+ 
+
+        
+]}
+
