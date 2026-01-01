@@ -8,6 +8,19 @@ function SearchForm({ filters, onFilterChange, onSearch, onClear }) {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+        {/* Property Type */}
+        <TextField
+          select
+          label="Property Type"
+          value={filters.type}
+          onChange={(e) => onFilterChange("type", e.target.value)}
+        >
+          <MenuItem value="Any">Any</MenuItem>
+          <MenuItem value="House">House</MenuItem>
+          <MenuItem value="Flat">Flat</MenuItem>
+        </TextField>
+
+        
       </Box>
     </LocalizationProvider>
   );
