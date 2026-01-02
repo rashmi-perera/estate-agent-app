@@ -70,6 +70,20 @@ function SearchForm({ filters, onFilterChange, onSearch, onClear }) {
             <MenuItem value={5}>5+</MenuItem>
           </TextField>
         </Box>
+        {/* Date Added */}
+        <Box sx={{ display: "flex", gap: 2 }}>
+          <DatePicker
+            label="Added After"
+            value={filters.dateFrom}
+            onChange={(val) => onFilterChange("dateFrom", val)}
+          />
+          <DatePicker
+            label="Added Before"
+            value={filters.dateTo}
+            onChange={(val) => onFilterChange("dateTo", val)}
+          />
+        </Box>
+
 
 
 
