@@ -38,6 +38,39 @@ function SearchForm({ filters, onFilterChange, onSearch, onClear }) {
             }}
           />
         </Box>
+        {/* Bedrooms */}
+        <Box sx={{ display: "flex", gap: 2 }}>
+          <TextField
+            select
+            fullWidth
+            label="Min Bedrooms"
+            value={filters.minBeds}
+            onChange={(e) => onFilterChange("minBeds", e.target.value)}
+          >
+            <MenuItem value="">Any</MenuItem>
+            <MenuItem value={1}>1</MenuItem>
+            <MenuItem value={2}>2</MenuItem>
+            <MenuItem value={3}>3</MenuItem>
+            <MenuItem value={4}>4</MenuItem>
+            <MenuItem value={5}>5+</MenuItem>
+          </TextField>
+
+          <TextField
+            select
+            fullWidth
+            label="Max Bedrooms"
+            value={filters.maxBeds}
+            onChange={(e) => onFilterChange("maxBeds", e.target.value)}
+          >
+            <MenuItem value="">Any</MenuItem>
+            <MenuItem value={1}>1</MenuItem>
+            <MenuItem value={2}>2</MenuItem>
+            <MenuItem value={3}>3</MenuItem>
+            <MenuItem value={4}>4</MenuItem>
+            <MenuItem value={5}>5+</MenuItem>
+          </TextField>
+        </Box>
+
 
 
         
