@@ -83,7 +83,7 @@ function SearchForm({ filters, onFilterChange, onSearch, onClear }) {
             onChange={(val) => onFilterChange("dateTo", val)}
           />
         </Box>
-        
+
         {/* Postcode */}
         <TextField
           select
@@ -100,6 +100,17 @@ function SearchForm({ filters, onFilterChange, onSearch, onClear }) {
           <MenuItem value="BR6">BR6</MenuItem>
           <MenuItem value="KT3">KT3</MenuItem>
         </TextField>
+
+        {/* BUTTONS */}
+        <Box sx={{ display: "flex", gap: 2 }}>
+          <Button variant="contained" onClick={onSearch}>
+            Search
+          </Button>
+          <Button variant="outlined" onClick={onClear}>
+            Clear
+          </Button>
+        </Box>
+
 
 
 
