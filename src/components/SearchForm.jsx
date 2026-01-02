@@ -20,6 +20,26 @@ function SearchForm({ filters, onFilterChange, onSearch, onClear }) {
           <MenuItem value="Flat">Flat</MenuItem>
         </TextField>
 
+        {/* Price Slider */}
+        <Box>
+          <Typography gutterBottom>
+            Price Range: £{filters.minPrice.toLocaleString()} - £{filters.maxPrice.toLocaleString()}
+          </Typography>
+
+          <Slider
+            value={[filters.minPrice, filters.maxPrice]}
+            min={0}
+            max={1500000}
+            step={50000}
+            valueLabelDisplay="auto"
+            onChange={(e, newValue) => {
+              onFilterChange("minPrice", newValue[0]);
+              onFilterChange("maxPrice", newValue[1]);
+            }}
+          />
+        </Box>
+
+
         
       </Box>
     </LocalizationProvider>
