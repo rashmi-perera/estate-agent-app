@@ -83,6 +83,25 @@ function SearchForm({ filters, onFilterChange, onSearch, onClear }) {
             onChange={(val) => onFilterChange("dateTo", val)}
           />
         </Box>
+        
+        {/* Postcode */}
+        <TextField
+          select
+          label="Postcode Area"
+          value={filters.postcode}
+          onChange={(e) => onFilterChange("postcode", e.target.value)}
+        >
+          <MenuItem value="">Any</MenuItem>
+          <MenuItem value="BR1">BR1</MenuItem>
+          <MenuItem value="BR2">BR2</MenuItem>
+          <MenuItem value="BR3">BR3</MenuItem>
+          <MenuItem value="BR4">BR4</MenuItem>
+          <MenuItem value="BR5">BR5</MenuItem>
+          <MenuItem value="BR6">BR6</MenuItem>
+          <MenuItem value="KT3">KT3</MenuItem>
+        </TextField>
+
+
 
 
 
