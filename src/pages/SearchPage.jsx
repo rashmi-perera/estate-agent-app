@@ -78,11 +78,55 @@ function SearchPage() {
   };
 
 
+  //clear search and reset filters
+  const handleClear = () => {
+    setFilters({
+      type: "Any",
+      minPrice: 0,
+      maxPrice: 1500000,
+      minBeds: "",
+      maxBeds: "",
+      postcode: "",
+      dateFrom: null,
+      dateTo: null,
+    });
+    setResults(propertiesData.properties);
+  };
+
+
+
+
 
 
   return (
     <div>
       <h1>Property Search</h1>
+
+      {/*render search form and filtered property results*/}
+      <SearchForm
+        filters={filters}
+        onFilterChange={handleFilterChange}
+        onSearch={handleSearch}
+        onClear={handleClear}
+      />
+
+    <div className="property-list">
+      {results.length === 0 ? (
+        <p className="no-results">
+          No properties match your search criteria.
+        </p>
+      ) : (
+        results.map(property => (
+          <PropertyCard 
+            key={property.id} 
+            property={property}
+            
+          />
+        ))
+      )}
+    </div>
+
+
     </div>
   );
 }
