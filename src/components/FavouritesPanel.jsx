@@ -7,9 +7,9 @@ function FavouritesPanel({
   onAddFavourite, 
   onRemoveFavourite 
 }) {
-  //Track when dragging a favourite item
+  // Track when dragging a favourite item
   const [isDraggingFav, setIsDraggingFav] = useState(false);
-  
+  // Handle dropping property into favourites
   const handleAddDrop = (e) => {
     e.preventDefault();
     if (e.dataTransfer.getData("source") !== "property") return;
@@ -17,24 +17,20 @@ function FavouritesPanel({
     const property = propertiesData.properties.find(
       (p) => p.id === propertyId
     );
+     // Add to favourites if found
     if (property) {
       onAddFavourite(property);
     }
   };
-  
   // Handle dropping favourite into remove zone
   const handleRemoveDrop = (e) => {
     e.preventDefault();
-    
-    
     if (e.dataTransfer.getData("source") !== "favourite") return;
-    
     // Get favourite ID and remove it
     const favId = e.dataTransfer.getData("text/plain");
     if (favId) {
       onRemoveFavourite(favId);
     }
-    
     setIsDraggingFav(false);
   };
 
@@ -69,12 +65,19 @@ function FavouritesPanel({
                 <span>
                   {fav.type} – £{fav.price.toLocaleString()}
                 </span>
+                
+                {/* Remove button */}
+                <button
+                  onClick={() => onRemoveFavourite(fav.id)}
+                  aria-label="Remove from favourites"
+                >
+                  ×
+                </button>
               </div>
             ))}
           </div>
         )}
       </div>
-      
       {/* Remove Zone - appears when dragging */}
       <div
         className={`remove-zone ${isDraggingFav ? "visible" : ""}`}
