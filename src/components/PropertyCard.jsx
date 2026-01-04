@@ -25,6 +25,7 @@ function PropertyCard({
       onAddFavourite(property);
     }
   };
+  
 
   return (
     <div
@@ -67,9 +68,10 @@ function PropertyCard({
         <p className="property-price">
           £{property.price.toLocaleString()}
         </p>
-
-        <p className="property-meta">
-          {property.bedrooms} bedrooms · {property.location}
+        {/* Short description */}
+        <p className="property-desc">
+          <strong>{property.bedrooms}</strong>-bedroom  {property.type.toLowerCase()} located in{" "}
+          <strong>{property.location.split(",")[0] }</strong>  
         </p>
         
         <Link to={`/property/${property.id}`} className="view-link">
