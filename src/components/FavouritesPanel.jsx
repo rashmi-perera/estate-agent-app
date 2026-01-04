@@ -8,32 +8,43 @@ function FavouritesPanel({
   onRemoveFavourite,
   onClearFavourites
 }) {
+  // Track when dragging a favourite
   const [isDraggingFav, setIsDraggingFav] = useState(false);
 
+  //DRAG IN (ADD FAVOURITE)
+  // Handle dropping property into favourites
   const handleAddDrop = (e) => {
     e.preventDefault();
+
     if (e.dataTransfer.getData("source") !== "property") return;
+    // Get property ID and find the property
     const propertyId = e.dataTransfer.getData("text/plain");
     const property = propertiesData.properties.find(
       (p) => p.id === propertyId
     );
+    // Add to favourites if found
     if (property) {
       onAddFavourite(property);
     }
   };
 
+  //DRAG OUT (REMOVE)
   const handleRemoveDrop = (e) => {
     e.preventDefault();
+
     if (e.dataTransfer.getData("source") !== "favourite") return;
+    // Get favourite ID and remove it
     const favId = e.dataTransfer.getData("text/plain");
     if (favId) {
       onRemoveFavourite(favId);
     }
+
     setIsDraggingFav(false);
   };
 
   return (
     <>
+      {/* FAVOURITES BOX */}
       <div
         className="favourites-box"
         onDragOver={(e) => e.preventDefault()}
@@ -63,7 +74,7 @@ function FavouritesPanel({
                 <span>
                   {fav.type} – £{fav.price.toLocaleString()}
                 </span>
-
+                {/* Remove button */}
                 <button
                   onClick={() => onRemoveFavourite(fav.id)}
                   aria-label="Remove from favourites"
@@ -72,7 +83,6 @@ function FavouritesPanel({
                 </button>
               </div>
             ))}
-
             {/* Clear All Button */}
             <button className="clear-btn" onClick={onClearFavourites}>
               Clear All
@@ -81,6 +91,7 @@ function FavouritesPanel({
         )}
       </div>
 
+      {/* REMOVE ZONE  */}
       <div
         className={`remove-zone ${isDraggingFav ? "visible" : ""}`}
         onDragOver={(e) => e.preventDefault()}
