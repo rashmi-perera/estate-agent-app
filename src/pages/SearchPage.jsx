@@ -3,6 +3,8 @@ import propertiesData from "../data/properties.json";
 import PropertyCard from "../components/PropertyCard";
 import SearchForm from "../components/SearchForm";
 import "./SearchPage.css";
+import FavouritesPanel from "../components/FavouritesPanel";
+
 
 
 const monthNames = [
@@ -18,7 +20,7 @@ const extractPostcode = (location) => {
 };
 
 
-function SearchPage() {
+function SearchPage({ favourites, onAddFavourite, onRemoveFavourite, onClearFavourites }) {
   //stores all search filter values
   const [filters, setFilters] = useState({
     type: "Any",
@@ -93,14 +95,19 @@ function SearchPage() {
     setResults(propertiesData.properties);
   };
 
-
+  
+  const isFavourite = (id) => {
+    return favourites.some(fav => fav.id === id);
+  };
 
 
 
 
   return (
-    <div>
+    <div  className="search-page-container">
       <h1>Property Search</h1>
+      <div className="serch-form-section">
+      
 
       {/*render search form and filtered property results*/}
       <SearchForm
@@ -109,6 +116,18 @@ function SearchPage() {
         onSearch={handleSearch}
         onClear={handleClear}
       />
+      </div>
+      <div className="favourites-section">
+      {/* Favourites Box */}
+      
+      <FavouritesPanel
+        favourites={favourites}
+        onAddFavourite={onAddFavourite}
+        onRemoveFavourite={onRemoveFavourite}
+        onClearFavourites={onClearFavourites}
+      />
+      </div>
+
 
     <div className="property-list">
       {results.length === 0 ? (
@@ -120,6 +139,9 @@ function SearchPage() {
           <PropertyCard 
             key={property.id} 
             property={property}
+            isFavourite={isFavourite(property.id)}
+            onAddFavourite={onAddFavourite}
+            onRemoveFavourite={onRemoveFavourite}
             
           />
         ))
