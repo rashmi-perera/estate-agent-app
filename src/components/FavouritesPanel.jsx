@@ -1,22 +1,18 @@
+import { useState } from "react";
 import "./FavouritesPanel.css";
 import propertiesData from "../data/properties.json";
 
 function FavouritesPanel({ favourites, onAddFavourite }) {
+  // Track when dragging a favourite item
+  const [isDraggingFav, setIsDraggingFav] = useState(false);
   
-  // Handle dropping property into favourites
   const handleAddDrop = (e) => {
     e.preventDefault();
-    
-    
     if (e.dataTransfer.getData("source") !== "property") return;
-    
-    // Get property ID and find the property
     const propertyId = e.dataTransfer.getData("text/plain");
     const property = propertiesData.properties.find(
       (p) => p.id === propertyId
     );
-    
-    // Add to favourites if found
     if (property) {
       onAddFavourite(property);
     }
@@ -37,7 +33,18 @@ function FavouritesPanel({ favourites, onAddFavourite }) {
       ) : (
         <div>
           {favourites.map((fav) => (
-            <div key={fav.id} className="fav-item">
+            <div 
+              key={fav.id} 
+              className="fav-item"
+              draggable={true}
+              onDragStart={(e) => {
+                e.dataTransfer.setData("text/plain", fav.id);
+                e.dataTransfer.setData("source", "favourite");
+                e.dataTransfer.effectAllowed = "move";
+                setIsDraggingFav(true);
+              }}
+              onDragEnd={() => setIsDraggingFav(false)}
+            >
               <span>
                 {fav.type} – £{fav.price.toLocaleString()}
               </span>
