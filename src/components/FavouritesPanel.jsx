@@ -2,14 +2,14 @@ import { useState } from "react";
 import "./FavouritesPanel.css";
 import propertiesData from "../data/properties.json";
 
-function FavouritesPanel({ 
-  favourites, 
-  onAddFavourite, 
-  onRemoveFavourite 
+function FavouritesPanel({
+  favourites,
+  onAddFavourite,
+  onRemoveFavourite,
+  onClearFavourites
 }) {
-  // Track when dragging a favourite item
   const [isDraggingFav, setIsDraggingFav] = useState(false);
-  // Handle dropping property into favourites
+
   const handleAddDrop = (e) => {
     e.preventDefault();
     if (e.dataTransfer.getData("source") !== "property") return;
@@ -17,16 +17,14 @@ function FavouritesPanel({
     const property = propertiesData.properties.find(
       (p) => p.id === propertyId
     );
-     // Add to favourites if found
     if (property) {
       onAddFavourite(property);
     }
   };
-  // Handle dropping favourite into remove zone
+
   const handleRemoveDrop = (e) => {
     e.preventDefault();
     if (e.dataTransfer.getData("source") !== "favourite") return;
-    // Get favourite ID and remove it
     const favId = e.dataTransfer.getData("text/plain");
     if (favId) {
       onRemoveFavourite(favId);
@@ -36,22 +34,22 @@ function FavouritesPanel({
 
   return (
     <>
-      <div 
+      <div
         className="favourites-box"
         onDragOver={(e) => e.preventDefault()}
         onDrop={handleAddDrop}
       >
         <h3>My Favourites ({favourites.length})</h3>
-        
+
         {favourites.length === 0 ? (
           <p className="empty-message">
             Drag properties here or click the heart button
           </p>
         ) : (
-          <div>
+          <>
             {favourites.map((fav) => (
-              <div 
-                key={fav.id} 
+              <div
+                key={fav.id}
                 className="fav-item"
                 draggable={true}
                 onDragStart={(e) => {
@@ -65,8 +63,7 @@ function FavouritesPanel({
                 <span>
                   {fav.type} – £{fav.price.toLocaleString()}
                 </span>
-                
-                {/* Remove button */}
+
                 <button
                   onClick={() => onRemoveFavourite(fav.id)}
                   aria-label="Remove from favourites"
@@ -75,10 +72,15 @@ function FavouritesPanel({
                 </button>
               </div>
             ))}
-          </div>
+
+            {/* Clear All Button */}
+            <button className="clear-btn" onClick={onClearFavourites}>
+              Clear All
+            </button>
+          </>
         )}
       </div>
-      {/* Remove Zone - appears when dragging */}
+
       <div
         className={`remove-zone ${isDraggingFav ? "visible" : ""}`}
         onDragOver={(e) => e.preventDefault()}
