@@ -2,6 +2,8 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import propertiesData from "../data/properties.json";
 import "./PropertyDetails.css";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
 
 function PropertyDetails({ favourites, onAddFavourite, onRemoveFavourite }) {
   // Extract property ID from URL
@@ -19,10 +21,14 @@ function PropertyDetails({ favourites, onAddFavourite, onRemoveFavourite }) {
   const [mainImage, setMainImage] = useState(
     property.pictures?.[0] || property.picture
   );
+  const [selectedTab, setSelectedTab] = useState(0);
+
+  
 
   // Reset image and tab when property changes
   useEffect(() => {
     setMainImage(property.pictures?.[0] || property.picture);
+    setSelectedTab(0);
   }, [property]);
 
   // Check if property is in favourites
@@ -115,6 +121,57 @@ function PropertyDetails({ favourites, onAddFavourite, onRemoveFavourite }) {
               <strong>Tenure:</strong> {property.tenure}
             </p>
           </div>
+        </div>
+
+        {/* RIGHT COLUMN */}
+        <div className="tabs-column">
+          <Tabs
+            selectedIndex={selectedTab}
+            onSelect={(index) => setSelectedTab(index)}
+          >
+            <TabList>
+              <Tab>Description</Tab>
+              <Tab>Floor Plan</Tab>
+              <Tab>Map</Tab>
+            </TabList>
+
+            <div className="tab-content-box">
+              {/* Description */}
+              <TabPanel>
+                <div className="description-content">
+                  {property.description}
+                </div>
+              </TabPanel>
+
+              {/* Floor Plan */}
+              <TabPanel>
+                <div className="tab-panel-wrapper">
+                  <img
+                    src={`/${
+                      property.floorPlan ||
+                      "images/floorplan-placeholder.jpg"
+                    }`}
+                    alt="Floor Plan"
+                    className="tab-media"
+                  />
+                </div>
+              </TabPanel>
+
+              {/* Map */}
+              <TabPanel>
+                <div className="tab-panel-wrapper">
+                  <iframe
+                    title="map"
+                    src={`https://www.google.com/maps?q=${encodeURIComponent(
+                      property.location
+                    )}&output=embed`}
+                    className="tab-media"
+                    loading="lazy"
+                  />
+                </div>
+              </TabPanel>
+            </div>
+          </Tabs>
         </div>
       </div>
     </div>
