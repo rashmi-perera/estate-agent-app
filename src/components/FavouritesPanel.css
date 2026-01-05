@@ -1,0 +1,233 @@
+/*FAVOURITES BOX*/
+
+.favourites-box {
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  min-height: auto;
+  max-height: 260px;
+  overflow-y: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.favourites-box:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Drag over effect */
+.favourites-box.drag-over {
+  background: #f0f8ff;
+  border-color: #4a90e2;
+  border-style: dashed;
+}
+
+.favourites-box h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 600;
+  border-bottom: 2px solid #4a90e2;
+  padding-bottom: 6px;
+}
+
+/* EMPTY STATE */
+
+.empty-message {
+  text-align: center;
+  color: #999;
+  font-size: 0.95rem;
+  padding: 40px 20px;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* FAVOURITE ITEMS */
+
+.fav-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  cursor: grab;
+  transition: all 0.2s ease;
+}
+
+.fav-item:hover {
+  background: #e9ecef;
+  border-color: #4a90e2;
+  transform: translateX(5px);
+}
+
+.fav-item:active {
+  cursor: grabbing;
+  opacity: 0.7;
+}
+
+.fav-item span {
+  flex: 1;
+  font-size: 0.9rem;
+  color: #495057;
+  font-weight: 500;
+}
+
+/* Remove button (X) */
+.fav-item button {
+  background: #e3858f;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  line-height: 1;
+  padding: 0;
+}
+
+.fav-item button:hover {
+  background: #c82333;
+  transform: scale(1.1);
+}
+
+.fav-item button:active {
+  transform: scale(0.95);
+}
+
+/* CLEAR ALL BUTTON */
+
+.clear-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  background: #ff9c9c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clear-btn:hover {
+  background: #b51800;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.clear-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* REMOVE ZONE (DRAG OUT */
+
+.remove-zone {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 20px 30px;
+  background: #dc3545;
+  color: white;
+  border: 3px dashed white;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.8) translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 16px rgba(220, 53, 69, 0.4);
+}
+
+.remove-zone.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: all;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1.05) translateY(-5px);
+  }
+}
+
+/* SCROLLBAR STYLING */
+
+.favourites-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.favourites-box::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.favourites-box::-webkit-scrollbar-thumb {
+  background: #4a90e2;
+  border-radius: 10px;
+}
+
+.favourites-box::-webkit-scrollbar-thumb:hover {
+  background: #357abd;
+}
+
+/*RESPONSIVE DESIGN */
+
+@media (max-width: 1024px) {
+  .favourites-box {
+    max-height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .favourites-box {
+    max-height: 400px;
+    margin-bottom: 20px;
+  }
+
+  .remove-zone {
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    text-align: center;
+    padding: 15px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .favourites-box {
+    padding: 15px;
+    min-height: 200px;
+  }
+
+  .favourites-box h3 {
+    font-size: 1.1rem;
+  }
+
+  .fav-item {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  .fav-item span {
+    font-size: 0.85rem;
+  }
+}
