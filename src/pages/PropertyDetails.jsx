@@ -4,6 +4,7 @@ import propertiesData from "../data/properties.json";
 import "./PropertyDetails.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import DOMPurify from "dompurify";
 
 function PropertyDetails({ favourites, onAddFavourite, onRemoveFavourite }) {
   // Extract property ID from URL
@@ -43,6 +44,9 @@ function PropertyDetails({ favourites, onAddFavourite, onRemoveFavourite }) {
       onAddFavourite(property);
     }
   };
+
+  // Sanitize description HTML 
+  const sanitizedDescription = DOMPurify.sanitize(property.description);
 
   return (
     <div className="property-details">
@@ -123,7 +127,7 @@ function PropertyDetails({ favourites, onAddFavourite, onRemoveFavourite }) {
           </div>
         </div>
 
-        {/* RIGHT COLUMN */}
+
         <div className="tabs-column">
           <Tabs
             selectedIndex={selectedTab}
@@ -138,9 +142,12 @@ function PropertyDetails({ favourites, onAddFavourite, onRemoveFavourite }) {
             <div className="tab-content-box">
               {/* Description */}
               <TabPanel>
-                <div className="description-content">
-                  {property.description}
-                </div>
+                <div
+                  className="description-content"
+                  dangerouslySetInnerHTML={{
+                    __html: sanitizedDescription,
+                  }}
+                />
               </TabPanel>
 
               {/* Floor Plan */}
