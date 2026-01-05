@@ -1,6 +1,181 @@
-.property-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+/*SEARCH PAGE CONTAINER*/
+
+.search-page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
 }
 
+.search-page-container h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin: 0 0 30px 0;
+  font-weight: 700;
+  text-align: center;
+  border-bottom: 3px solid #4a90e2;
+  padding-bottom: 15px;
+}
+
+
+.search-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 25px;
+  margin-bottom: 40px;
+  align-items: start;
+}
+
+.search-form-section {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+.favourites-section {
+  position: sticky;
+  top: 20px;
+  align-self: start;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  z-index: 50;
+}
+
+/* PROPERTY LIST (RESULTS)*/
+
+.property-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 30px;
+}
+/* No results message */
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 1.2rem;
+  color: #6c757d;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 2px dashed #dee2e6;
+  margin: 20px 0;
+}
+
+/* RESPONSIVE DESIGN - TABLET*/
+
+@media (max-width: 1024px) {
+  .search-page-container h1 {
+    font-size: 2rem;
+  }
+
+  .search-layout,
+  [search-layout] {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .favourites-section {
+    position: sticky;
+    top: 10px;
+    z-index: 50;
+    max-height: 30vh; /* limit sticky area */
+    overflow-y: auto;
+  }
+
+  .search-form-section {
+    padding: 20px;
+  }
+
+  .property-list {
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+  }
+}
+
+/* RESPONSIVE DESIGN - MOBILE*/
+
+@media (max-width: 768px) {
+  .search-page-container {
+    padding: 15px;
+  }
+
+  .search-page-container h1 {
+    font-size: 1.75rem;
+    margin-bottom: 20px;
+  }
+
+  .search-layout {
+    gap: 15px;
+    margin-bottom: 25px;
+    overflow: visible;
+  }
+
+  .favourites-section {
+     position: sticky;
+    top: 0;
+    z-index: 200;
+    background: white;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f3f3f3;
+  }
+
+  .search-form-section {
+    padding: 15px;
+  }
+
+  .property-list {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .no-results {
+    padding: 40px 15px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-page-container h1 {
+    font-size: 1.5rem;
+    padding-bottom: 10px;
+  }
+
+  .favourites-section {
+  
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+    height: fit-content;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    z-index: 100;
+ }
+
+  }
+
+  .search-form-section {
+    padding: 12px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .property-list {
+    gap: 12px;
+  }
+
+/*
+RESPONSIVE DESIGN JUSTIFICATION
+
+The search page uses CSS Grid and media queries to provide two distinct layouts.
+On large screens,a two column page layout is used,with the main search content
+in one column and a favourites panel in the second column.The favourites panel
+uses sticky positioning so it remains visible while scrolling,making
+drag and drop interactions easier for users.
+
+Below iPad landscape width (1024px),the layout switches to a single-column
+structure. The property results grid reduces from three columns to two columns,
+and then to a single-column list on mobile screens (768px and below) to improve
+readability and usability on smaller devices.
+*/
