@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import propertiesData from "../data/properties.json";
 import "./PropertyDetails.css";
 
-function PropertyDetails() {
+function PropertyDetails({ favourites, onAddFavourite, onRemoveFavourite }) {
   // Extract property ID from URL
   const { id } = useParams();
 
@@ -25,6 +25,19 @@ function PropertyDetails() {
     setMainImage(property.pictures?.[0] || property.picture);
   }, [property]);
 
+  // Check if property is in favourites
+  const isFavourite =
+    favourites?.some((fav) => fav.id === property.id) || false;
+
+  // Toggle favourite
+  const handleFavouriteClick = () => {
+    if (isFavourite) {
+      onRemoveFavourite(property.id);
+    } else {
+      onAddFavourite(property);
+    }
+  };
+
   return (
     <div className="property-details">
       {/* Header */}
@@ -32,6 +45,26 @@ function PropertyDetails() {
         <Link to="/" className="back-link">
           ← Back to Search
         </Link>
+
+        {/* Favourite button with ICON */}
+        <button
+          className={`fav-btn-details ${isFavourite ? "active" : ""}`}
+          onClick={handleFavouriteClick}
+          aria-label="Toggle favourite"
+        >
+          <img
+            src={
+              isFavourite
+                ? "/icons/heart-filled.png"
+                : "/icons/heart-outline.png"
+            }
+            alt="Favourite"
+            className="heart-img-details"
+          />
+          <span className="fav-text">
+            {isFavourite ? "Remove Favourite" : "Add Favourite"}
+          </span>
+        </button>
       </div>
 
       {/* Property title */}
