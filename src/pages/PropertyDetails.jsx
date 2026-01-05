@@ -66,6 +66,22 @@ function PropertyDetails() {
               </div>
             </div>
           </div>
+
+          {/* Property info */}
+          <div className="property-info">
+            <p>
+              <strong>Price:</strong> £{property.price.toLocaleString()}
+            </p>
+            <p>
+              <strong>Bedrooms:</strong> {property.bedrooms}
+            </p>
+            <p>
+              <strong>Location:</strong> {property.location}
+            </p>
+            <p>
+              <strong>Tenure:</strong> {property.tenure}
+            </p>
+          </div>
         </div>
       </div>
     </div>
