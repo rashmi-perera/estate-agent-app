@@ -1,11 +1,100 @@
 .property-card {
-  border: 1px solid rgb(221, 221, 221);
-  padding: 12px;
-  width: 280px;
-  background-color: rgb(255, 255, 255);
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
-.property-card img {
+/* Property image */
+.property-image {
   width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Card content */
+.property-info {
+  padding: 16px;
+}
+
+/* Header row */
+.property-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Title */
+.property-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #111827;
+}
+
+/* Favourite button */
+.fav-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.fav-btn:hover {
+  background-color: #f3f4f6;
+  transform: scale(1.05);
+}
+
+/* Active favourite */
+.fav-btn.active {
+  background-color: #fee2e2;
+  border-color: #fecaca;
+}
+
+/* Heart icon */
+.heart-img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* Price */
+.property-price {
+  margin: 8px 0;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Short Description */
+.property-desc {
+  font-size: 14px;
+  color: #555;
+  margin: 6px 0;
+  line-height: 1.4;
+}
+
+/* View details link */
+.view-link {
+  display: inline-block;
+  margin-top: 8px;
+  color: #2563eb;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.view-link:hover {
+  text-decoration: underline;
 }
 
